@@ -1,0 +1,32 @@
+{% extends "base.html" %} {% block container %}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <table class="table" style="border: 1px solid black">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>url</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ fav.pk }}</td>
+                        <td>{{ fav.nombre }}</td>
+                        <td>{{ fav.url }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <a href="{% url 'app_favoritos:borrar' fav.pk %}"
+        ><button type="button" class="btn btn-outline-danger">Borrar</button></a
+    >
+    <a href="{% url 'app_favoritos:index' %}">
+        <button type="button" class="btn btn-outline-secondary">Volver</button>
+    </a>
+</div>
+
+{% endblock container %}

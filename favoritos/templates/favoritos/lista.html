@@ -1,0 +1,41 @@
+{% extends "base.html" %} {% block container %}
+
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h1>Listado favoritos</h1>
+                    <p> 
+                        <a class="btn btn-outline-primary" href="{% url 'app_favoritos:crear' %}">Agregar nuevo</a>
+                    </p>
+                </div>
+            </div>
+<div class="row ">
+    <div class="col">
+        <table class="table table-bordered table-hover" >
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>url</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for fav in favoritos_lista %}
+                    <tr >
+                        <td>{{ fav.nombre }} </td>
+                        <td>{{ fav.url }} </td>
+                        <td> <a class="btn btn-outline-danger mb-2" href="{% url 'app_favoritos:borrar' fav.pk %}">Borrar</a>
+                            <br>
+                            <a class="btn btn-outline-info mb-2" href="{% url 'app_favoritos:detalle' fav.pk %}">Detalle</a>
+                            <br>
+                            <a class="btn btn-outline-secondary mb-2" href="{% url 'app_favoritos:actualizar' fav.pk %}">Actualizar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody
+        </table>
+    </div>
+</div>
+
+        </div>
+{% endblock container %}
